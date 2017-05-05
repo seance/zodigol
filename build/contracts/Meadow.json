@@ -1,0 +1,49 @@
+{
+  "contract_name": "Meadow",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "index",
+          "type": "uint16"
+        }
+      ],
+      "name": "getLiveCell",
+      "outputs": [
+        {
+          "name": "",
+          "type": "int16"
+        },
+        {
+          "name": "",
+          "type": "int8"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "getCellCount",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "type": "constructor"
+    }
+  ],
+  "unlinked_binary": "0x606060405234610000575b5b5b61011c8061001b6000396000f300606060405263ffffffff60e060020a6000350416632e44c3cc8114602c5780639d37c635146066575b6000565b34600057603d61ffff600435166082565b604051808360010b60010b81526020018260000b60000b81526020019250505060405180910390f35b34600057607060e9565b60408051918252519081900360200190f35b6000600060008361ffff16600080549050111560d95760008461ffff168154811015600057906000526020600020900160005b50805490915061ffff81169062010000900460ff16600b81116000579250925060e2565b60001992508291505b5b50915091565b6000545b905600a165627a7a723058200a80b4889ca9af3567d56043fc1686268dfdfc928d1a11238fb86ea2af8c0f260029",
+  "networks": {},
+  "schema_version": "0.0.5",
+  "updated_at": 1493911620843
+}

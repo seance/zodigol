@@ -1,0 +1,17 @@
+0.0.0.0:8080 {
+  root /srv
+  log stdout
+  errors stdout
+}
+
+localhost:8545 {
+  proxy / client:8545 {
+    transparent
+  }
+}
+
+localhost:8546 {
+  proxy / client:8546 {
+    transparent
+  }
+}

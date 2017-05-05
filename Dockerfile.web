@@ -1,0 +1,11 @@
+FROM abiosoft/caddy:0.9.3
+MAINTAINER github/seance
+
+# Add build artifacts to webroot
+ADD build /srv/
+
+# Copy Caddyfile
+COPY Caddyfile /etc/Caddyfile
+
+EXPOSE 8080
+WORKDIR /srv

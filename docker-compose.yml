@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+
+  # Geth node
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    ports:
+      - "8545:8545"
+
+  # Caddy server/proxy
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    ports:
+      - "8080:8080"

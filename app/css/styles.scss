@@ -1,0 +1,265 @@
+@import 'normalize';
+@import 'loader';
+
+@import url('https://fonts.googleapis.com/css?family=Fascinate+Inline|Quicksand');
+
+body {
+  color: whitesmoke;
+  background-color: #333;
+  font-family: 'Quicksand', sans-serif;
+}
+
+h1 {
+  font-family: 'Fascinate Inline', cursive;
+  font-size: 3.5rem;
+  color: orange;
+  margin-top: .8rem;
+  margin-bottom: .8rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: darkturquoise;
+  margin-top: .6rem;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.header-bar {
+  align-items: center;
+
+  > * {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  > *:nth-child(2) {
+    color: gray;
+    flex: 99;
+  }
+  > *:nth-child(3) {
+    color: gray;
+  }
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+.meadow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  cursor: pointer;
+  width: calc(24 * 32px);
+  height: calc(24 * 32px);
+  margin: 10px;
+}
+
+.grid-cell {
+  width: 22px;
+  height: 22px;
+  background-color: #444;
+  margin: 1px;
+}
+
+.live-cell {
+  display: flex;
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  margin: 1;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  animation: wobble 1s infinite;
+  transition: left 0.5s, top 0.5s;
+}
+
+.scoreboard {
+  margin: 10px;
+}
+
+.scoreboard-table {
+  width: 100%;
+
+  tbody:before {
+    content: "-";
+    display: block;
+    line-height: .5em;
+    color: transparent;
+  }
+}
+
+.scoreboard-colony {
+  td:nth-child(1) {
+    text-align: center;
+  }
+  td:nth-child(2) {
+    text-align: left;
+  }
+  td:nth-child(3) {
+    text-align: center;
+  }
+  td:nth-child(4) {
+    text-align: center;
+  }
+  td:nth-child(5) {
+    text-align: center;
+  }
+  td {
+    text-align: right;
+    padding: 2px 5px;
+  }
+}
+
+.faction {
+  justify-content: center;
+}
+
+.faction-icon {
+  width: 32px;
+  height: 22px;
+  margin: 1px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+}
+
+.faction-name {
+  line-height: 24px;
+}
+
+.registration {
+  margin: 10px;
+}
+
+.registration-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  > * {
+    margin: 20px 5px;
+  }
+}
+
+.founding {
+  margin: 10px;
+}
+
+.faction-selection {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.faction-choice {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 5px 15px;
+
+  input[type='radio'] {
+    margin-right: 10px;
+  }
+}
+
+.player-colony {
+  margin: 10px;
+}
+
+.colony-stats {
+  font-size: 1.25em;
+
+  .stat-key {
+    color: lightsalmon;
+  }
+  .colony-faction {
+    display: flex;
+  }
+}
+
+.active-colony {
+  color: greenyellow;
+}
+
+.inactive-colony {
+  color: gray;
+}
+
+@keyframes wobble {
+  0% {transform: rotate(20deg);}
+  50% {transform: rotate(-20deg);}
+  100% {transform: rotate(20deg);}
+}
+
+.faction-0 {
+  background-image: url('/images/rat.png');
+}
+
+.faction-1 {
+  background-image: url('/images/ox.png');
+}
+
+.faction-2 {
+  background-image: url('/images/tiger.png');
+}
+
+.faction-3 {
+  background-image: url('/images/rabbit.png');
+}
+
+.faction-4 {
+  background-image: url('/images/dragon.png');
+}
+
+.faction-5 {
+  background-image: url('/images/snake.png');
+}
+
+.faction-6 {
+  background-image: url('/images/horse.png');
+}
+
+.faction-7 {
+  background-image: url('/images/goat.png');
+}
+
+.faction-8 {
+  background-image: url('/images/monkey.png');
+}
+
+.faction-9 {
+  background-image: url('/images/rooster.png');
+}
+
+.faction-10 {
+  background-image: url('/images/dog.png');
+}
+
+.faction-11 {
+  background-image: url('/images/pig.png');
+}

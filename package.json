@@ -1,0 +1,68 @@
+{
+  "name": "zodigol",
+  "version": "1.0.0",
+  "description": "Zodigol",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && docker-compose up",
+    "build": "npm run build-js && npm run build-scss && npm run truffle:build",
+    "build-js": "browserify app/js/index.js -o app/bundle.js",
+    "build-scss": "node-sass --output-style compressed --source-map-embed ./app/css/styles.scss ./app/bundle.css",
+    "watch-js": "n-run -w 'app/js/**/*.js' 'npm run build-js'",
+    "watch-jsx": "n-run -w 'app/js/**/*.jsx' 'npm run build-js'",
+    "watch-scss": "n-run -w './app/css/**/*.scss' 'npm run build-scss'",
+    "watch": "n-run 'npm run watch-js' 'npm run watch-jsx' 'npm run watch-scss'",
+    "testrpc": "testrpc -b 5 -l 1DF5E76",
+    "clean": "n-clean app/bundle.js app/bundle.css app/bundle.css.map build",
+    "truffle:compile": "truffle compile",
+    "truffle:build": "truffle build",
+    "truffle:migrate": "truffle migrate",
+    "truffle:migrate:zodigol": "truffle migrate --network zodigol",
+    "truffle:serve": "truffle serve",
+    "truffle:test": "truffle test",
+    "truffle:console": "truffle console",
+    "generate-gm": "npm run build && node tools/generate-gm"
+  },
+  "keywords": [
+    "ethereum",
+    "game of life",
+    "chinese",
+    "zodiac"
+  ],
+  "author": "github/seance",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.3.0",
+    "ethereumjs-testrpc": "^3.0.5",
+    "node-sass": "^4.5.2",
+    "npm-build-tools": "^2.2.5",
+    "truffle": "^3.2.1",
+    "truffle-default-builder": "^2.0.0"
+  },
+  "dependencies": {
+    "partial.lenses": "^10.3.0",
+    "prop-types": "^15.5.8",
+    "ramda": "^0.23.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "xstream": "^10.5.0"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "env",
+            "react",
+            "stage-2"
+          ]
+        }
+      ]
+    ]
+  }
+}

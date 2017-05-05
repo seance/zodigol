@@ -1,0 +1,30 @@
+FROM kunstmaan/ethereum-geth:latest
+MAINTAINER github/seance
+
+# Add Zodigol genesis
+ADD genesis.json /genesis.json
+
+# Initialize Full node
+RUN geth init /genesis.json
+
+# Create account
+RUN echo "diddlydoo" > /password && \
+    geth --password /password account new
+
+EXPOSE 8545
+EXPOSE 8546
+
+# Run Geth with RPC APIs
+CMD geth \
+  --networkid=7041602 \
+  --cache=512 \
+  --ethstats='zodigol-peer:rope-jack-apple-queen@146.185.144.229' \
+  --bootnodes=enode://8bc27607d7bbf110e7fa2d8645de1d70082d8d5a01bff17fa0305e60557c66a1689d201c2330c42b0a4e0078e7efb57ce6106dbf605cd86ed49bf57c7a0f5759@146.185.144.229:30303 \
+  --rpc \
+  --rpcaddr '0.0.0.0' \
+  --rpcport 8545 \
+  --wsaddr '0.0.0.0' \
+  --wsport 8546 \
+  --rpcapi 'db,eth,net,web3,personal,clique' \
+  --wsorigins '*' \
+  --rpccorsdomain '*'

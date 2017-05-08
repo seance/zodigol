@@ -17,7 +17,6 @@ export const Registration = ({ playerName, onNameChange, createPlayerAccount }) 
         placeholder="Player name"
         maxLength="20"
         minLength="1"
-        pattern="[\w\s\d]"
         />
       <button onClick={e => createPlayerAccount(playerName)}>
         Register

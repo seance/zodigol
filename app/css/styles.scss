@@ -101,6 +101,27 @@ a {
 
 .scoreboard {
   margin: 10px;
+
+  th, td {
+    text-align: right;
+    padding: 2px 5px;
+
+    &:nth-child(1) {
+      text-align: center;
+    }
+    &:nth-child(2) {
+      text-align: left;
+    }
+    &:nth-child(3) {
+      text-align: center;
+    }
+    &:nth-child(4) {
+      text-align: center;
+    }
+    &:nth-child(5) {
+      text-align: center;
+    }
+  }
 }
 
 .scoreboard-table {
@@ -111,28 +132,6 @@ a {
     display: block;
     line-height: .5em;
     color: transparent;
-  }
-}
-
-.scoreboard-colony {
-  td:nth-child(1) {
-    text-align: center;
-  }
-  td:nth-child(2) {
-    text-align: left;
-  }
-  td:nth-child(3) {
-    text-align: center;
-  }
-  td:nth-child(4) {
-    text-align: center;
-  }
-  td:nth-child(5) {
-    text-align: center;
-  }
-  td {
-    text-align: right;
-    padding: 2px 5px;
   }
 }
 

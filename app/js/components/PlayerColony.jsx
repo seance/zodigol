@@ -24,7 +24,7 @@ export const PlayerColony = ({ playerFaction, onFactionChange, activeFactions, p
   ]
 
   const selection = [
-    <p>
+    <p key="new-colony">
       To start a new colony, select a faction below and click anywhere on the
       Meadow grid!
     </p>,

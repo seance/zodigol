@@ -17,16 +17,18 @@ export const blockId$ = xstream.create({
   stop: () => {}
 })
 
-export const playerAccount$ = switchMapPromise(blockId$, blockId =>
+export const tick$ = blockId$.startWith(null)
+
+export const playerAccount$ = switchMapPromise(tick$, blockId =>
   zodigol.getPlayerAccount.call().then(p => mapPlayer(p)).catch(() => undefined))
 
-export const playerColony$ = switchMapPromise(blockId$, blockId =>
+export const playerColony$ = switchMapPromise(tick$, blockId =>
   zodigol.getPlayerColony.call().then(c => mapColony(c)).catch(() => undefined))
 
-export const round$ = switchMapPromise(blockId$, blockId =>
+export const round$ = switchMapPromise(tick$, blockId =>
   zodigol.getCurrentRound.call().then(r => r.toNumber()))
 
-export const count$ = switchMapPromise(blockId$, blockId =>
+export const count$ = switchMapPromise(tick$, blockId =>
   zodigol.getCellCount.call().then(c => c.toNumber()))
 
 export const cells$ = switchMapPromise(count$, count =>
@@ -34,7 +36,7 @@ export const cells$ = switchMapPromise(count$, count =>
     zodigol.getLiveCell.call(index).then(c => mapLiveCell(c))
   ))
 
-export const factions$ = switchMapPromise(blockId$, blockId =>
+export const factions$ = switchMapPromise(tick$, blockId =>
   zodigol.getActiveFactions.call().then(fs =>
     fs.map(f => f.toNumber())))
 

@@ -1,6 +1,12 @@
 FROM kunstmaan/ethereum-geth:latest
 MAINTAINER github/seance
 
+# Generate unique-ish peer name
+RUN apt-get update && \
+  apt-get install -y wmanx && \
+  shuf -n1 /usr/share/dict/manx | sed 's/[^[:alpha:]]//g' | sed 's/.*/\L&/' > /nodename && \
+  echo "Using peer name '$(cat /nodename)'"
+
 # Add Zodigol genesis
 ADD genesis.json /genesis.json
 
@@ -18,7 +24,7 @@ EXPOSE 8546
 CMD geth \
   --networkid=7041602 \
   --cache=512 \
-  --ethstats='zodigol-peer:rope-jack-apple-queen@146.185.144.229' \
+  --ethstats="zodigol-peer-$(cat /nodename):rope-jack-apple-queen@146.185.144.229" \
   --bootnodes=enode://8bc27607d7bbf110e7fa2d8645de1d70082d8d5a01bff17fa0305e60557c66a1689d201c2330c42b0a4e0078e7efb57ce6106dbf605cd86ed49bf57c7a0f5759@146.185.144.229:30303 \
   --rpc \
   --rpcaddr '0.0.0.0' \

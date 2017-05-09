@@ -19,10 +19,10 @@ function runGM() {
     }
   }
   filter.watch(stopOnError(function(blockId) {
-    eth.getBlock(blockId, stopOnError(function(block) {
+    zodigol.runGameRound.estimateGas(stopOnError(function(estimate) {
       zodigol.runGameRound({
         from: eth.accounts[0],
-        gas: block.gasLimit
+        gas: Math.floor(1.25 * estimate)
       }, stopOnError(function(tx) {
         console.log('Run game round', tx)
       }))

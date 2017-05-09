@@ -46,11 +46,16 @@ const cellsReducer = cells$.map(replaceState)
 
 const coloniesReducer = colonies$.map(replaceState)
 
+const useGas = estimate =>
+  Math.floor(1.24 * estimate)
+
 const createPlayerAccountReducer = effectReducer(createPlayerAccount, playerName => {
   console.log('Create account for', playerName)
-  confirmTx(zodigol.registerAsPlayer(playerName, {
-    from: account,
-    gas: 4e6
+  confirmTx(zodigol.registerAsPlayer.estimateGas(player).then(estimate => {
+    return zodigol.registerAsPlayer(playerName, {
+      from: window.account,
+      gas: useGas(estimate)
+    })
   })).then(() => {
     console.log('Created account for', playerName)
   }).catch(() => {
@@ -60,9 +65,11 @@ const createPlayerAccountReducer = effectReducer(createPlayerAccount, playerName
 
 const foundColonyReducer = effectReducer(foundColony, ([faction, cells]) => {
   console.log(`Found colony faction ${faction} at ${cells}`)
-  confirmTx(zodigol.foundColony(faction, cells, {
-    from: account,
-    gas: 4e6
+  confirmTx(zodigol.foundColony.estimateGas(faction, cells).then(estimate => {
+    return zodigol.foundColony(faction, cells, {
+      from: window.account,
+      gas: useGas(estimate)
+    })
   })).then(() => {
     console.log(`Founded colony faction ${faction} at ${cells}`)
   }).catch(() => {
@@ -72,9 +79,11 @@ const foundColonyReducer = effectReducer(foundColony, ([faction, cells]) => {
 
 const useGenesisReducer = effectReducer(useGenesis, index => {
   console.log(`Use genesis at ${index}`)
-  confirmTx(zodigol.useGenesis(index, {
-    from: account,
-    gas: 4e6
+  confirmTx(zodigol.useGenesis.estimateGas(index).then(estimate => {
+    return zodigol.useGenesis(index, {
+      from: window.account,
+      gas: useGas(estimate)
+    })
   })).then(() => {
     console.log(`Used genesis at ${index}`)
   }).catch(() => {

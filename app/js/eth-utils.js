@@ -2,6 +2,6 @@
 export const confirmTx = txPromise => txPromise.then(sentTx =>
   eth.getTransactionAsync(sentTx.tx).then(blockTx =>
     sentTx.receipt.gasUsed >= blockTx.gas && !sentTx.logs.length
-      ? Promise.reject(new Error(sentTx))
+      ? Promise.reject(new Error(`Transaction failed: ${sentTx.tx}`))
       : Promise.resolve(sentTx)
   ))

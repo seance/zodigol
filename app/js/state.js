@@ -1,6 +1,5 @@
 import * as L from 'partial.lenses'
 import {
-  blockId$,
   playerAccount$,
   playerColony$,
   round$,

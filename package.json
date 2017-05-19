@@ -13,7 +13,7 @@
     "watch-scss": "n-run -w './app/css/**/*.scss' 'npm run build-scss'",
     "watch": "n-run 'npm run watch-js' 'npm run watch-jsx' 'npm run watch-scss'",
     "lint": "eslint app --ignore-pattern app/bundle.js",
-    "testrpc": "testrpc -b 5 -l 1DF5E76",
+    "testrpc": "node testrpc",
     "clean": "n-clean app/bundle.js app/bundle.css app/bundle.css.map build",
     "truffle:compile": "truffle compile",
     "truffle:build": "truffle build",

@@ -1,9 +1,9 @@
 Promise.config({
-    // Enables all warnings except forgotten return statements.
-    warnings: {
-        wForgottenReturn: false
-    }
-});
+  // Enables all warnings except forgotten return statements.
+  warnings: {
+    wForgottenReturn: false
+  }
+})
 
 // TestRPC doesn't implement unlockAccount
 const unlockAccount = account =>

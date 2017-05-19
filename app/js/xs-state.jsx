@@ -19,7 +19,7 @@ export const effectReducer = (action, handler) =>
   action.$.debug(handler).map(() => R.identity)
 
 
-export const scoped = (reducer, optic) =>
+export const scopeReducer = (reducer, optic) =>
   reducer.map(mapper => state => L.modify(optic, mapper, state))
 
 export const combineReducers = reducers =>

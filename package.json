@@ -6,12 +6,13 @@
   "scripts": {
     "start": "npm run build && docker-compose up",
     "build": "npm run build-js && npm run build-scss && npm run truffle:build",
-    "build-js": "browserify app/js/index.js -o app/bundle.js",
+    "build-js": "npm run lint && browserify app/js/index.js -o app/bundle.js",
     "build-scss": "node-sass --output-style compressed --source-map-embed ./app/css/styles.scss ./app/bundle.css",
     "watch-js": "n-run -w 'app/js/**/*.js' 'npm run build-js'",
     "watch-jsx": "n-run -w 'app/js/**/*.jsx' 'npm run build-js'",
     "watch-scss": "n-run -w './app/css/**/*.scss' 'npm run build-scss'",
     "watch": "n-run 'npm run watch-js' 'npm run watch-jsx' 'npm run watch-scss'",
+    "lint": "eslint app --ignore-pattern app/bundle.js",
     "testrpc": "testrpc -b 5 -l 1DF5E76",
     "clean": "n-clean app/bundle.js app/bundle.css app/bundle.css.map build",
     "truffle:compile": "truffle compile",
@@ -26,7 +27,7 @@
   "keywords": [
     "ethereum",
     "game of life",
-    "chinese",
+    "chinese zodiac",
     "zodiac"
   ],
   "author": "github/seance",
@@ -37,6 +38,8 @@
     "babel-preset-stage-2": "^6.24.1",
     "babelify": "^7.3.0",
     "browserify": "^14.3.0",
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^7.0.1",
     "ethereumjs-testrpc": "^3.0.5",
     "node-sass": "^4.5.2",
     "npm-build-tools": "^2.2.5",
